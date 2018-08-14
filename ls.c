@@ -17,8 +17,8 @@ void		execute_ls(char *str, int fd)
 	pid_t		pid;
 
 	cmds = ft_strsplit(str, ' ');
-	dup2(fd, 1);
 	dup2(fd, 2);
+	dup2(fd, 1);
 	pid = fork();
 	if (pid == 0)
 		execve("/bin/ls", cmds, environ);
@@ -45,5 +45,6 @@ void		ftp_ls(int sock_fd, char *str)
 	while (sent < size)
 		sent += send(sock_fd, buff + sent, BUFF_SIZE, 0);
 	unlink(".tmp");
+	close(fd);
 	munmap(buff, size);
 }

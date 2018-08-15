@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 10:28:22 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 10:47:26 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 10:51:39 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_mkdir(int sock_fd, char *str)
 	char	*tmp;
 	size_t	size;
 
-	ret = mkdir(str, 0666);
+	ret = mkdir(str, 0777);
 	if (ret == -1)
 		tmp = ft_strdup(ERROR" failed to create dir");
 	else

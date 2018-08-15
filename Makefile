@@ -6,7 +6,7 @@
 #    By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/11 11:29:48 by ttshivhu          #+#    #+#              #
-#    Updated: 2018/08/15 09:49:58 by ttshivhu         ###   ########.fr        #
+#    Updated: 2018/08/15 10:46:43 by ttshivhu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SERVER = server
 CLIENT = client
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I. -Ilibft
-SRC = get_dir.c cutils.c file_handling.c generic.c ls.c pwd_cd.c local.c
+SRC = file_dir.c get_dir.c cutils.c file_handling.c generic.c ls.c pwd_cd.c local.c
 SILENT = --no-print-directory
 OBJ = $(SRC:.c=.o)
 all: $(SERVER)

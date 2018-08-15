@@ -6,11 +6,22 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:40:49 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 09:43:53 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 10:48:05 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ftp.h>
+
+static int	file_commands(int sock_fd, char *str)
+{
+	if (!ft_strncmp(str, "mkdir", 5))
+		return (ft_mkdir(sock_fd, ft_strchr(str, ' ') + 1));
+	if (!ft_strncmp(str, "rmdir", 5))
+		return (ft_rmdir(sock_fd, ft_strchr(str, ' ') + 1));
+	if (!ft_strncmp(str, "unlink", 6))
+		return (ft_unlink(sock_fd, ft_strchr(str, ' ') + 1));
+	return (0);
+}
 
 static void	command(int sock_fd, char *str)
 {
@@ -26,6 +37,8 @@ static void	command(int sock_fd, char *str)
 		ftp_pwd(sock_fd);
 	else if (!ft_strncmp(str, "quit", 4))
 		ftp_quit(sock_fd);
+	else if (file_commands(sock_fd, str))
+		return ;
 	else
 		ftp_error(sock_fd);
 }

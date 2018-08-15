@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:18:31 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 09:22:19 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 17:13:37 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void		send_data(int sock_fd, void *buf, size_t size)
 			progress((float)sent, (float)size);
 			sent += send(sock_fd, buf + sent, BUFF_SIZE, 0);
 		}
+		progress(sent, (float)size);
 	}
 }
 

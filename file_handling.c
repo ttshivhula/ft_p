@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 08:54:35 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 09:46:55 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 17:12:56 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		receivefile(int sock_fd, size_t size, char *file_path)
 		write(fd, buf, r);
 		received += r;
 	}
+	progress(received, (float)size);
 	close(fd);
 	return (1);
 }

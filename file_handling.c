@@ -1,6 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_handling.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/15 08:54:35 by ttshivhu          #+#    #+#             */
+/*   Updated: 2018/08/15 09:29:05 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ftp.h>
 
-int	receivefile(int sock_fd, size_t size, char *file_path)
+void	progress(float current, float max)
+{
+	float percentage;
+
+	percentage = (current / max) * 100;
+	ft_putstr("\033[A\033[2K");
+	ft_putstr("Progress: ");
+	ft_putnbr((int)percentage);
+	ft_putendl(" %");
+}
+
+int		receivefile(int sock_fd, size_t size, char *file_path)
 {
 	int		fd;
 	char	buf[BUFF_SIZE];
@@ -10,8 +33,11 @@ int	receivefile(int sock_fd, size_t size, char *file_path)
 	if ((fd = open(file_path, O_CREAT | O_TRUNC | O_WRONLY, 0644)) < 0)
 		return (0);
 	received = 0;
+	ft_putchar('\n');
+	progress(0, (float)size);
 	while (received < size)
 	{
+		progress((float)received, (float)size);
 		r = recv(sock_fd, buf, BUFF_SIZE, 0);
 		write(fd, buf, r);
 		received += r;
@@ -22,7 +48,7 @@ int	receivefile(int sock_fd, size_t size, char *file_path)
 
 void	ftp_get(int sock_fd, char *str)
 {
-	int	fd;
+	int		fd;
 	size_t	size;
 	void	*buf;
 	size_t	sent;

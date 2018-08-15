@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/15 08:58:46 by ttshivhu          #+#    #+#             */
+/*   Updated: 2018/08/15 09:26:49 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ftp.h>
 
 void		free_ptr(char **ptr)
 {
-	int  i;
+	int	i;
 
 	i = -1;
 	while (ptr[++i])
@@ -12,7 +24,6 @@ void		free_ptr(char **ptr)
 
 void		execute_ls(char *str, int fd)
 {
-	extern char	**environ;
 	char		**cmds;
 	pid_t		pid;
 
@@ -21,17 +32,17 @@ void		execute_ls(char *str, int fd)
 	dup2(fd, 1);
 	pid = fork();
 	if (pid == 0)
-		execve("/bin/ls", cmds, environ);
+		execv("/bin/ls", cmds);
 	else
 	{
-		wait(0);
+		wait4(0, NULL, 0, NULL);
 		free_ptr(cmds);
 	}
 }
 
 void		ftp_ls(int sock_fd, char *str)
 {
-	int	fd;
+	int		fd;
 	size_t	size;
 	char	*buff;
 	size_t	sent;

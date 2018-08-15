@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ftp.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/15 09:14:33 by ttshivhu          #+#    #+#             */
+/*   Updated: 2018/08/15 09:17:42 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FTP_H
 # define FTP_H
 
@@ -21,9 +33,9 @@
 # define SUCCESS "\x1b[32mSUCCESS:\x1b[0m"
 # define BUFF_SIZE 1024
 
-int	receivefile(int sock_fd, size_t size, char *file_path);
+int		receivefile(int sock_fd, size_t size, char *file_path);
 size_t	getsize(int fd);
-int	is_dir(char *name);
+int		is_dir(char *name);
 char	*get_root(void);
 char	*get_dir(void);
 char	*basename(char *str);
@@ -41,5 +53,6 @@ void	free_ptr(char **ptr);
 void	local_cd(char *str);
 void	local_pwd(void);
 void	local_ls(char *str);
+void	progress(float current, float max);
 
 #endif

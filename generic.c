@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generic.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/15 09:22:33 by ttshivhu          #+#    #+#             */
+/*   Updated: 2018/08/15 09:22:44 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ftp.h>
 
 void	ft_die(char *str, int exit_code)
@@ -8,7 +20,6 @@ void	ft_die(char *str, int exit_code)
 
 void	ftp_quit(int sock_fd)
 {
-	ft_putendl("Client disconected");
 	close(sock_fd);
 	exit(0);
 }

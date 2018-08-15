@@ -21,7 +21,6 @@ static void	command(int sock_fd, char *str)
 static void	client_server_loop(int sock_fd)
 {
 	char	cmd[BUFF_SIZE];
-	ft_putendl("New client connected");
 	while (42)
 	{
 		ft_bzero(cmd, BUFF_SIZE);

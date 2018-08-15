@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:14:33 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 10:46:15 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 11:26:30 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <sys/param.h>
 # include <stdint.h>
 # include <sys/wait.h>
@@ -54,6 +55,7 @@ void	local_cd(char *str);
 void	local_pwd(void);
 void	local_ls(char *str);
 void	progress(float current, float max);
+int		remove_dir(char *path, int path_len);
 int		ft_mkdir(int sock_fd, char *str);
 int		ft_rmdir(int sock_fd, char *str);
 int		ft_unlink(int sock_fd, char *str);

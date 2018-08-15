@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:14:33 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 11:26:30 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 11:40:57 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <netdb.h>
 # include <dirent.h>
 # include <libft.h>
+# include <readline/readline.h>
 
 # define ERROR "\x1b[31mERROR:\x1b[0m"
 # define SUCCESS "\x1b[32mSUCCESS:\x1b[0m"

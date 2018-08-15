@@ -6,7 +6,7 @@
 #    By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/11 11:29:48 by ttshivhu          #+#    #+#              #
-#    Updated: 2018/08/15 10:46:43 by ttshivhu         ###   ########.fr        #
+#    Updated: 2018/08/15 11:48:27 by ttshivhu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ $(SERVER): $(OBJ)
 	gcc -c $(CFLAGS) smain.c
 	gcc -c $(CFLAGS) cmain.c
 	gcc $(OBJ) smain.o $(CFLAGS) -Llibft -lft -o $(SERVER)
-	gcc $(OBJ) cmain.o $(CFLAGS) -Llibft -lft -o $(CLIENT)
+	gcc $(OBJ) cmain.o $(CFLAGS) -Llibft -lft -lreadline -o $(CLIENT)
 	@printf "\x1b[32mCompiled $(SERVER) and $(CLIENT)\x1b[0m\n"
 
 clean:

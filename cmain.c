@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:00:29 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 09:45:20 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 11:53:38 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,19 @@ static int	check_local(char *cmd)
 static void	ftp_shell(int sock_fd)
 {
 	int			ret;
-	char		cmd[BUFF_SIZE];
+	char		*cmd;
 
-	ft_putstr("\x1b[34mftp >\x1b[0m ");
-	ret = read(0, cmd, BUFF_SIZE - 1);
-	cmd[ret - 1] = '\0';
+	cmd = readline("\x1b[34mftp >\x1b[0m ");
+	ret = ft_strlen(cmd);
 	if (ret == 0)
 		ft_putchar('\n');
 	if (ret == 1 || check_local(cmd))
+	{
+		cmd ? free(cmd) : 0;
 		return ;
+	}
 	process_commands(sock_fd, cmd);
+	cmd ? free(cmd) : 0;
 }
 
 int			main(int c, char **v)

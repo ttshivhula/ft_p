@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:00:29 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 11:53:38 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 12:07:28 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,11 @@ static void	ftp_shell(int sock_fd)
 {
 	int			ret;
 	char		*cmd;
+	char		*tmp;
 
-	cmd = readline("\x1b[34mftp >\x1b[0m ");
+	tmp = readline("\x1b[34mftp >\x1b[0m ");
+	cmd = ft_strtrim(tmp);
+	tmp ? free(tmp) : 0;
 	ret = ft_strlen(cmd);
 	if (ret == 0)
 		ft_putchar('\n');

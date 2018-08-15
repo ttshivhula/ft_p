@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 09:00:29 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 09:00:49 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 09:45:20 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ static void	process_commands(int sock_fd, char *str)
 {
 	size_t	size;
 	char	cmd[BUFF_SIZE];
-	
+
 	send(sock_fd, str, sizeof(cmd), 0);
 	if (!ft_strncmp(str, "put", 3))
 		client_put(sock_fd, ft_strchr(str, ' ') + 1);
 	if (!ft_strncmp(str, "get", 3))
 		client_get(sock_fd, ft_strchr(str, ' ') + 1);
 	if (!ft_strncmp(str, "quit", 4))
-			exit(0);
+		exit(0);
 	recv(sock_fd, &size, sizeof(size_t), 0);
 	receive_data(sock_fd, size);
 }
@@ -88,7 +88,7 @@ int			main(int c, char **v)
 {
 	struct sockaddr_in	addr;
 	struct hostent		*host;
-	int			fd;
+	int					fd;
 
 	if (c != 3)
 		ft_die("Usage: ./client host port\n", 1);

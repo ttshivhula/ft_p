@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 08:54:35 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 09:29:05 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/15 09:46:55 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,8 @@ void	ftp_get(int sock_fd, char *str)
 	size = getsize(fd);
 	buf = mmap(0, size, PROT_READ, MAP_PRIVATE, fd, 0);
 	send(sock_fd, &size, sizeof(size_t), 0);
-	if (size > 0)
-	{
-		while (sent < size)
-			sent += send(sock_fd, buf + sent, BUFF_SIZE, 0);
-	}
+	while (sent < size && (size > 0))
+		sent += send(sock_fd, buf + sent, BUFF_SIZE, 0);
 	munmap(buf, size);
 	if (size > 0)
 		buf = ft_strdup(SUCCESS" file received from server");
@@ -80,7 +77,7 @@ void	ftp_put(int sock_fd, char *str)
 {
 	size_t	size;
 	char	*buf;
-	int	ret;
+	int		ret;
 
 	ret = 0;
 	recv(sock_fd, &size, sizeof(size_t), 0);

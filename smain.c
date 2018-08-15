@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   smain.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/15 09:40:49 by ttshivhu          #+#    #+#             */
+/*   Updated: 2018/08/15 09:43:53 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ftp.h>
 
 static void	command(int sock_fd, char *str)
@@ -21,6 +33,7 @@ static void	command(int sock_fd, char *str)
 static void	client_server_loop(int sock_fd)
 {
 	char	cmd[BUFF_SIZE];
+
 	while (42)
 	{
 		ft_bzero(cmd, BUFF_SIZE);
@@ -31,9 +44,9 @@ static void	client_server_loop(int sock_fd)
 
 static void	accept_clients(int sock_fd, socklen_t size)
 {
-	pid_t		pid;
-	struct sockaddr_in addr;
-	int			client_fd;
+	pid_t				pid;
+	struct sockaddr_in	addr;
+	int					client_fd;
 
 	if (listen(sock_fd, 10000) == -1)
 		ft_putstr(ERROR" Listen failed\n");
@@ -49,16 +62,16 @@ static void	accept_clients(int sock_fd, socklen_t size)
 
 int			main(int c, char **v)
 {
-	struct sockaddr_in addr;
-	int		server_fd;
+	struct sockaddr_in	addr;
+	int					server_fd;
 
 	if (c != 2)
-		ft_die("Usage: ./serveur port\n", 1);
+		ft_die("Usage: ./server port\n", 1);
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
 		ft_die(ERROR" server socket creation failed\n", 1);
 	addr.sin_port = htons(ft_atoi(v[1]));
-    	addr.sin_family = AF_INET;
-    	addr.sin_addr.s_addr = INADDR_ANY;
+	addr.sin_family = AF_INET;
+	addr.sin_addr.s_addr = INADDR_ANY;
 	if (bind(server_fd, (void*)&(addr), sizeof(addr)) < 0)
 		ft_die(ERROR" server port bind failed\n", 1);
 	ft_putstr("Server listening on port ");

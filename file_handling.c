@@ -12,14 +12,33 @@
 
 #include <ftp.h>
 
+void	loading(int current)
+{
+	int i;
+	char buff[21];
+	
+	i = 0;
+	ft_bzero(buff, 21);
+	while (++i <= 20)
+	{
+		if (i <= current / 5)
+			buff[i - 1] = '#';
+		else
+			buff[i - 1] = '_';
+	}
+	ft_putstr(buff);
+	ft_putstr("] ");
+}
+
 void	progress(float current, float max)
 {
 	float percentage;
 
 	percentage = (current / max) * 100;
 	ft_putstr("\033[A\033[2K");
-	ft_putstr("Progress: ");
-	ft_putnbr((int)percentage);
+	ft_putstr("\x1b[33mIO:\x1b[0m [");
+	loading((int)percentage);
+	ft_putnbr(((int)percentage > 100) ? 100 : (int)percentage);
 	ft_putendl(" %");
 }
 

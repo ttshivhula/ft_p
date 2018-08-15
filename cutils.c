@@ -28,6 +28,7 @@ static void		send_data(int sock_fd, void *buf, size_t size)
 	sent = 0;
 	if (size > 0)
 	{
+		ft_putchar('\n');
 		progress(0.0, (float)size);
 		while (sent < size)
 		{

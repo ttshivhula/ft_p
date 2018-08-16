@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 08:54:35 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/08/15 17:12:56 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/08/16 08:59:45 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	loading(int current)
 {
-	int i;
-	char buff[21];
-	
+	int		i;
+	char	buff[21];
+
 	i = 0;
 	ft_bzero(buff, 21);
 	while (++i <= 20)
